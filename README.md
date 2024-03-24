@@ -8,57 +8,33 @@
 
 | Generic name | Type      | Value      | Description |
 | ------------ | --------- | ---------- | ----------- |
-| START_BITS   | integer   | 1          |             |
-| DATA_BITS    | integer   | 8          |             |
-| STOP_BITS    | integer   | 1          |             |
-| BAUD_RATE    | integer   | 9600       |             |
-| CLOCK_FREQ   | integer   | 33_300_000 |             |
-| ACTIVE_STATE | std_logic | '0'        |             |
-| DATA_WIDTH   | integer   | 8          |             |
-| DATA_DEPTH   | integer   | 64         |             |
-| REFRESH_RATE | integer   | 600        |             |
-| UPDATE_RATE  | integer   | 1          |             |
+| START_BITS   | integer   | 1          | Allows easy changes between UART standards.            |
+| DATA_BITS    | integer   | 8          | Allows easy changes between UART standards.            |
+| STOP_BITS    | integer   | 1          | Allows easy changes between UART standards.            |
+| BAUD_RATE    | integer   | 9600       | Allows easy changes between UART standards.            |
+| CLOCK_FREQ   | integer   | 33_300_000 | Frequency of the FPGA main clock.            |
+| ACTIVE_STATE | std_logic | '0'        | Allows easy change between inverted and regular UART.            |
+| DATA_WIDTH   | integer   | 8          | Sets width of circular buffer. Set as either 7 or 8 depending on Ascii/UART standard.            |
+| DATA_DEPTH   | integer   | 64         | Sets depth of circular buffer. The amount of chars that can be stored at one time.            |
+| REFRESH_RATE | integer   | 600        | Seven segment total refresh rate in Hz. 600/5 = 120 Hz overall.             |
+| UPDATE_RATE  | integer   | 1          | How fast the morse character displayed changes.            |
 
 ## Ports
 
 | Port name | Direction | Type      | Description |
 | --------- | --------- | --------- | ----------- |
-| clk       | in        | std_logic |             |
-| uart_rx   | in        | std_logic |             |
-| uart_tx   | out       | std_logic |             |
-| dot       | out       | std_logic |             |
-| dash      | out       | std_logic |             |
-| cathode0  | out       | std_logic |             |
-| cathode1  | out       | std_logic |             |
-| cathode2  | out       | std_logic |             |
-| cathode3  | out       | std_logic |             |
-| cathode4  | out       | std_logic |             |
-| tick      | out       | std_logic |             |
+| clk       | in        | std_logic | Clock input.            |
+| uart_rx   | in        | std_logic | UART Rx            |
+| uart_tx   | out       | std_logic | UART Tx. This is internally linked to RX to allow for easy debugging.            |
+| dot       | out       | std_logic | Used to control seven segment dot.            |
+| dash      | out       | std_logic | Used to control seven segment dash (section d).            |
+| cathode0  | out       | std_logic | Used to select cathode0.            |
+| cathode1  | out       | std_logic | Used to select cathode1.            |
+| cathode2  | out       | std_logic | Used to select cathode2.            |
+| cathode3  | out       | std_logic | Used to select cathode3.            |
+| cathode4  | out       | std_logic | Used to select cathode4.            |
+| tick      | out       | std_logic | Debugging signal.           |
 
-## Signals
-
-| Name          | Type                         | Description |
-| ------------- | ---------------------------- | ----------- |
-| rst           | std_logic                    |             |
-| rx_data       | std_logic_vector(7 downto 0) |             |
-| rx_done       | std_logic                    |             |
-| read_rx_fifo  | std_logic                    |             |
-| rx_fifo_in    | std_logic_vector(7 downto 0) |             |
-| rx_fifo_out   | std_logic_vector(7 downto 0) |             |
-| rx_fifo_empty | std_logic                    |             |
-| loopback      | std_logic                    |             |
-| tx_data       | std_logic_vector(7 downto 0) |             |
-| send_byte     | std_logic                    |             |
-| tx_active     | std_logic                    |             |
-| read_tx_fifo  | std_logic                    |             |
-| tx_fifo_in    | std_logic_vector(7 downto 0) |             |
-| tx_fifo_out   | std_logic_vector(7 downto 0) |             |
-| display_clk   | std_logic                    |             |
-| dots          | std_logic_vector(4 downto 0) |             |
-| dashes        | std_logic_vector(4 downto 0) |             |
-| s_cathode     | std_logic_vector(4 downto 0) |             |
-| s_cnt         | integer                      |             |
-| s_tick        | std_logic                    |             |
 
 ## Instantiations
 
