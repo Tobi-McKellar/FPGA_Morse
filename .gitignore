@@ -1,0 +1,5 @@
+.DS_Store
+bld/*
+work-obj93.cf
+Verilog/
+json/
