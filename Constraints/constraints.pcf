@@ -1,0 +1,13 @@
+set_io clk A9
+
+set_io uart_rx A11 #a
+set_io uart_tx B7 #b
+set_io cathode0 A33 #c
+set_io cathode1 A34
+set_io cathode2 A35
+set_io cathode3 A39
+set_io cathode4 A40
+set_io dash B12 #d
+
+set_io dot B11 #DP
+set_io tick A12
